@@ -31,7 +31,7 @@ namespace core {
             renderer->Initialize();
 
             serializer = new ASESerializer();
-            scene = serializer->LoadSceneFromFile(std::string("media\\test01.ASE"));
+            scene = serializer->LoadSceneFromFile(std::string("assets\\textures\\test01.ASE"));
             renderer->LoadTextureMaps(scene->GetTexturesList());
 
             pipeline = new Pipeline();

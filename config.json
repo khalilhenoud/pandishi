@@ -1,0 +1,33 @@
+{
+	"PROJECT_DIRECTORIES": {
+		"levelFilesDir": "assets/levels/",
+		"archetypesDir": "assets/archetypes/",
+		"bgmDir": "assets/bgm/",
+		"sfxDir": "assets/sfx/",
+		"shadersDir": "assets/shaders",
+		"texturesDir": "assets/textures",
+		"fontsDir": "assets/fonts"
+	},
+	"WINDOW_SETTINGS": {
+		"title" : "Pandishi",
+		"resolutions": [
+			{
+				"width": 1280,
+				"height": 720
+			},
+			{
+				"width": 1536,
+				"height": 864
+			},
+			{
+				"width": 1600,
+				"height": 900
+			},
+			{
+				"width": 1920,
+				"height": 1080
+			}
+		],
+		"defaultResolution": 0
+	}
+}
