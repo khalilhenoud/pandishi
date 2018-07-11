@@ -162,7 +162,7 @@ bool core::OGLRenderer::LoadTextureMap(std::string path)
 		char directory[1000];
 		GetCurrentDirectory(1000, directory);
 		fullpath = directory;
-		fullpath += "\\media\\textures\\";
+		fullpath += "\\assets\\textures\\textures\\";
 		fullpath += filename;
 
 		// If the file still cannot be found return false.,
