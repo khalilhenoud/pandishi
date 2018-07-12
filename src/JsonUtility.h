@@ -7,7 +7,7 @@
 /**
 * @brief Handles serialization of json objects
 */
-namespace JsonUtility {
+namespace utils {
 	/**
 	* @brief JsonObject is a wrapper to be used with the game engine
 	*/

@@ -221,18 +221,18 @@ namespace core {
 		 void TestCode() {
 
 			 std::string s = "test.json";
-			 JsonUtility::JsonObject json;
-			 JsonUtility::JsonUtility::ParseJsonFile(json, s.c_str());
+			 utils::JsonObject json;
+			 utils::JsonUtility::ParseJsonFile(json, s.c_str());
 
 			 std::string name = "";
 			 int intValue = 0;
 			 float floatValue = 0.0f;
 			 bool boolValue = false;
 
-			 JsonUtility::JsonUtility::ParseValue(name, json, "Name");
-			 JsonUtility::JsonUtility::ParseValue(intValue, json, "intValue");
-			 JsonUtility::JsonUtility::ParseValue(floatValue, json, "floatValue");
-			 JsonUtility::JsonUtility::ParseValue(boolValue, json, "boolValue");
+			 utils::JsonUtility::ParseValue(name, json, "Name");
+			 utils::JsonUtility::ParseValue(intValue, json, "intValue");
+			 utils::JsonUtility::ParseValue(floatValue, json, "floatValue");
+			 utils::JsonUtility::ParseValue(boolValue, json, "boolValue");
 
 			 std::cout << "Name: " << name << std::endl;
 			 std::cout << "intValue: " << intValue << std::endl;

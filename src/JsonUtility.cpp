@@ -2,7 +2,7 @@
 #include "externalLibs/rapidjson/filereadstream.h"
 #include <iostream>
 
-namespace JsonUtility {
+namespace utils {
 
 	void JsonUtility::ParseJsonFile(JsonObject& j, const char* path) {
 		FILE* fp;
