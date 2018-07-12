@@ -10,6 +10,10 @@
 #include "pipeline.h"
 #include "camera.h"
 
+// Added library for test purposes
+#include "JsonUtility.h"
+#include <iostream>
+
 extern int client_area_width;
 extern int client_area_height;
 
@@ -49,6 +53,9 @@ namespace core {
 
             utils::FrameRateController::Initialize();
             utils::FrameRateController::LockFrameRateAt(60);
+
+			// Ugly test code
+			TestCode();
         }
 
         virtual void Update(void)
@@ -210,5 +217,28 @@ namespace core {
          bool firsttime;
          int x, y, dx, dy, mousex, mousey, oldmousex, oldmousey;
          float yanglelimit;
+
+		 void TestCode() {
+
+			 std::string s = "test.json";
+			 JsonUtility::JsonObject json;
+			 JsonUtility::ParseJsonFile(json, s.c_str());
+
+			 std::string name = "";
+			 int intValue = 0;
+			 float floatValue = 0.0f;
+			 bool boolValue = false;
+
+			 name = JsonUtility::ParseString(json, "Name");
+			 intValue = JsonUtility::ParseInt(json, "intValue");
+			 floatValue = JsonUtility::ParseFloat(json, "floatValue");
+			 boolValue = JsonUtility::ParseBool(json, "boolValue");
+
+			 std::cout << "Name: " << name << std::endl;
+			 std::cout << "intValue: " << intValue << std::endl;
+			 std::cout << "floatValue: " << floatValue << std::endl;
+			 std::cout << "boolValue: " << boolValue << std::endl;
+		 }
+
     } my_application;
 }

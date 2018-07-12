@@ -103,11 +103,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <AdditionalDependencies>Winmm.lib;Shlwapi.lib;opengl32.lib;glu32.lib;gdiplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>NotSet</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <AdditionalDependencies>Winmm.lib;Shlwapi.lib;opengl32.lib;glu32.lib;gdiplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>NotSet</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -116,6 +118,7 @@
     <ClCompile Include="src\binary_serializer.cpp" />
     <ClCompile Include="src\frameratecontroller.cpp" />
     <ClCompile Include="src\input.cpp" />
+    <ClCompile Include="src\JsonUtility.cpp" />
     <ClCompile Include="src\mesh.cpp" />
     <ClCompile Include="src\model.cpp" />
     <ClCompile Include="src\my_application.cpp" />
@@ -131,11 +134,48 @@
     <ClInclude Include="src\bbox.h" />
     <ClInclude Include="src\binary_serializer.h" />
     <ClInclude Include="src\camera.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\allocators.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\cursorstreamwrapper.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\document.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\encodedstream.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\encodings.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\error\en.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\error\error.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\filereadstream.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\filewritestream.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\fwd.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\biginteger.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\diyfp.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\dtoa.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\ieee754.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\itoa.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\meta.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\pow10.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\regex.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\stack.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\strtod.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\internal\swap.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\istreamwrapper.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\memorybuffer.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\memorystream.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\msinttypes\inttypes.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\msinttypes\stdint.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\ostreamwrapper.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\pointer.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\prettywriter.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\rapidjson.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\reader.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\schema.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\stream.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\stringbuffer.h" />
+    <ClInclude Include="src\externalLibs\rapidjson\writer.h" />
     <ClInclude Include="src\framerateController.h" />
     <ClInclude Include="src\geom.h" />
     <ClInclude Include="src\GLEXT.H" />
     <ClInclude Include="src\gvector.h" />
     <ClInclude Include="src\input.h" />
+    <ClInclude Include="src\JsonUtility.h" />
     <ClInclude Include="src\line.h" />
     <ClInclude Include="src\matrix.h" />
     <ClInclude Include="src\mesh.h" />
