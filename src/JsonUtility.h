@@ -28,21 +28,10 @@ namespace JsonUtility {
 	std::string ParseString(const JsonObject& j, const char* name);
 	bool DoesValueExist(const JsonObject& j, const char* name);
 
-	/*
-	template <typename T> T ParseValue(const JsonObject& j, const char* name) {
-		if (j.json[name].IsInt()) {
-			return ParseString();
-		}
-		else if (j.json[name].IsFloat()) {
-			return ParseFloat();
-		}
-		else if (j.json[name].IsBool()) {
-			return ParseBool();
-		}
-		else if (j.json[name].IsString()) {
-			return ParseString();
-		}
-	}*/
+	void ParseValue(int& value, const JsonObject& j, const char* name);
+	void ParseValue(float& value, const JsonObject& j, const char* name);
+	void ParseValue(std::string& value, const JsonObject& j, const char* name);
+	void ParseValue(bool& value, const JsonObject& j, const char* name);
 }
 
 #endif // !JSONUTILITY_H

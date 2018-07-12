@@ -229,10 +229,10 @@ namespace core {
 			 float floatValue = 0.0f;
 			 bool boolValue = false;
 
-			 name = JsonUtility::ParseString(json, "Name");
-			 intValue = JsonUtility::ParseInt(json, "intValue");
-			 floatValue = JsonUtility::ParseFloat(json, "floatValue");
-			 boolValue = JsonUtility::ParseBool(json, "boolValue");
+			 JsonUtility::ParseValue(name, json, "Name");
+			 JsonUtility::ParseValue(intValue, json, "intValue");
+			 JsonUtility::ParseValue(floatValue, json, "floatValue");
+			 JsonUtility::ParseValue(boolValue, json, "boolValue");
 
 			 std::cout << "Name: " << name << std::endl;
 			 std::cout << "intValue: " << intValue << std::endl;

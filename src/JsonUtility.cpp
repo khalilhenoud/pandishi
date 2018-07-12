@@ -71,6 +71,22 @@ namespace JsonUtility {
 		return j.json[name].GetString();
 	}
 
+	void ParseValue(int& value, const JsonObject& j, const char* name) {
+		value = ParseInt(j, name);
+	}
+
+	void ParseValue(float& value, const JsonObject& j, const char* name) {
+		value = ParseFloat(j, name);
+	}
+
+	void ParseValue(std::string& value, const JsonObject& j, const char* name) {
+		value = ParseString(j, name);
+	}
+
+	void ParseValue(bool& value, const JsonObject& j, const char* name) {
+		value = ParseBool(j, name);
+	}
+
 	bool DoesValueExist(const JsonObject& j, const char* name) {
 		rapidjson::Value::ConstMemberIterator value = j.json.FindMember(name);
 		if (value == j.json.MemberEnd()) {
