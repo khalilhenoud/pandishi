@@ -4,10 +4,12 @@
 
 namespace JsonUtility {
 
-	void ParseJsonFile(JsonObject& j, const char* path) {
+	void JsonUtility::ParseJsonFile(JsonObject& j, const char* path) {
 		FILE* fp;
 		errno_t err;
-		err = fopen_s(&fp, path, "rb"); // Change to r if not windows
+
+		// Change to r if not windows (Add if, def to run appropriate parameter)
+		err = fopen_s(&fp, path, "rb"); 
 
 		// Close the file and return if there is an error
 		if (err != 0) {
@@ -22,13 +24,22 @@ namespace JsonUtility {
 		char* buffer = new char[size];
 		fseek(fp, 0, SEEK_SET);
 
+		// If file is empty
+		if (size == 0) {
+			std::cout << "Error: File " << path << " is an empty file." << std::endl;
+			delete[]buffer;
+			fclose(fp);
+			return;
+		}
+
 		// FileReadStream is a byte stream, it does not handle encodings. Make sure file is UTF-8 (Implement EncodedInputStream if other formats are required)
 		rapidjson::FileReadStream is(fp, buffer, size*sizeof(char));
 
-		// TODO: Add error check to make sure file is not empty or if there is a json error format
-
 		// Parse json file and store it in j.json
-		j.json.ParseStream(is);
+		if (j.json.ParseStream(is).HasParseError()) {
+			std::cout << "Error: File " << path << " is not a valid json file." << std::endl;
+		}
+
 		j.path = path;
 
 		// Delete memory
@@ -36,58 +47,39 @@ namespace JsonUtility {
 		fclose(fp);
 	}
 
-	int ParseInt(const JsonObject& j, const char* name) {
-		// Disable error checking with if, define
-		if (!DoesValueExist(j, name)) {
-			return 0;
-		}
-
+	int JsonUtility::_ParseInt(const JsonObject& j, const char* name) {
 		return j.json[name].GetInt();
 	}
 
-	float ParseFloat(const JsonObject& j, const char* name) {
-		// Disable error checking with if, define
-		if (!DoesValueExist(j, name)) {
-			return 0.0f;
-		}
-
+	float JsonUtility::_ParseFloat(const JsonObject& j, const char* name) {
 		return j.json[name].GetFloat();
 	}
 
-	bool ParseBool(const JsonObject& j, const char* name) {
-		// Disable error checking with if, define
-		if (!DoesValueExist(j, name)) {
-			return false;
-		}
-
+	bool JsonUtility::_ParseBool(const JsonObject& j, const char* name) {
 		return j.json[name].GetBool();
 	}
 
-	std::string ParseString(const JsonObject& j, const char* name) {
-		// Disable error checking with if, define
-		if (!DoesValueExist(j, name)) {
-			return "";
-		}
+	std::string JsonUtility::_ParseString(const JsonObject& j, const char* name) {
 		return j.json[name].GetString();
 	}
 
-	void ParseValue(int& value, const JsonObject& j, const char* name) {
-		value = ParseInt(j, name);
+	void JsonUtility::_ParseValue(int& value, const JsonObject& j, const char* name) {
+		value = _ParseInt(j, name);
 	}
 
-	void ParseValue(float& value, const JsonObject& j, const char* name) {
-		value = ParseFloat(j, name);
+	void JsonUtility::_ParseValue(float& value, const JsonObject& j, const char* name) {
+		value = _ParseFloat(j, name);
 	}
 
-	void ParseValue(std::string& value, const JsonObject& j, const char* name) {
-		value = ParseString(j, name);
+	void JsonUtility::_ParseValue(std::string& value, const JsonObject& j, const char* name) {
+		value = _ParseString(j, name);
 	}
 
-	void ParseValue(bool& value, const JsonObject& j, const char* name) {
-		value = ParseBool(j, name);
+	void JsonUtility::_ParseValue(bool& value, const JsonObject& j, const char* name) {
+		value = _ParseBool(j, name);
 	}
 
-	bool DoesValueExist(const JsonObject& j, const char* name) {
+	bool JsonUtility::_DoesValueExist(const JsonObject& j, const char* name) {
 		rapidjson::Value::ConstMemberIterator value = j.json.FindMember(name);
 		if (value == j.json.MemberEnd()) {
 			std::cout << "Value " << name << "does not exit in the following json file: " << j.path.c_str() << std::endl;

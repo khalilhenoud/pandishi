@@ -21,17 +21,33 @@ namespace JsonUtility {
 	/**
 	* @brief Parses a json file from disk and stores in JsonObject
 	*/
-	void ParseJsonFile(JsonObject& j, const char* path);
-	int ParseInt(const JsonObject& j, const char* name);
-	float ParseFloat(const JsonObject& j, const char* name);
-	bool ParseBool(const JsonObject& j, const char* name);
-	std::string ParseString(const JsonObject& j, const char* name);
-	bool DoesValueExist(const JsonObject& j, const char* name);
+	class JsonUtility {
+	public:
+		JsonUtility() {}
+		~JsonUtility() {}
+		static void ParseJsonFile(JsonObject& j, const char* path);
+		template<typename T>
+		static void ParseValue(T& value, const JsonObject& j, const char* name) {
+			// Disable error checking with if, define
+			if (!_DoesValueExist(j, name)) {
+				return;
+			}
 
-	void ParseValue(int& value, const JsonObject& j, const char* name);
-	void ParseValue(float& value, const JsonObject& j, const char* name);
-	void ParseValue(std::string& value, const JsonObject& j, const char* name);
-	void ParseValue(bool& value, const JsonObject& j, const char* name);
+			//TODO check if type is supported
+
+			_ParseValue(value, j, name);
+		}
+	private:
+		static void _ParseValue(int& value, const JsonObject& j, const char* name);
+		static void _ParseValue(float& value, const JsonObject& j, const char* name);
+		static void _ParseValue(std::string& value, const JsonObject& j, const char* name);
+		static void _ParseValue(bool& value, const JsonObject& j, const char* name);
+		static int _ParseInt(const JsonObject& j, const char* name);
+		static float _ParseFloat(const JsonObject& j, const char* name);
+		static bool _ParseBool(const JsonObject& j, const char* name);
+		static std::string _ParseString(const JsonObject& j, const char* name);
+		static bool _DoesValueExist(const JsonObject& j, const char* name);
+	};
 }
 
 #endif // !JSONUTILITY_H
