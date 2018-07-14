@@ -36,11 +36,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
+FILE *stream;
+
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
 {
 	hInst = hInstance;
 	GdiplusStartupInput gdiplusStartupInput;
 	ULONG_PTR           gdiplusToken;
+
+#ifdef _DEBUG
+	#ifdef _MSC_VER
+		AllocConsole();
+		AttachConsole(GetCurrentProcessId());
+		freopen_s(&stream, "CON", "w", stdout);
+	#endif // _MSC_VER
+#endif
 
 	// Initialize GDI plus.
 	GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);

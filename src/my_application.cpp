@@ -219,7 +219,6 @@ namespace core {
          float yanglelimit;
 
 		 void TestCode() {
-
 			 std::string s = "test.json";
 			 utils::JsonObject json;
 			 utils::JsonUtility::ParseJsonFile(json, s.c_str());
